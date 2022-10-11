@@ -4,9 +4,11 @@ import os
 import pdb
 
 #file_path = "./c_validation_1280_720_daylight_1/"
+cur_dir = os.getcwd()
 file_path = "C:/Users/a/annotation/c_validation_1280_720_daylight_1"
 os.chdir(file_path)
 file_list = os.listdir()
+os.chdir(cur_dir)
 #cnt=0
 for filename in file_list:
     file_name = os.path.splitext(filename)[0]
