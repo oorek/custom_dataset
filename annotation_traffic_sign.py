@@ -8,13 +8,12 @@ cur_dir = os.getcwd()
 file_path = "C:/Users/a/annotation/c_validation_1280_720_daylight_1"
 os.chdir(file_path)
 file_list = os.listdir()
-os.chdir(cur_dir)
 #cnt=0
 for filename in file_list:
     file_name = os.path.splitext(filename)[0]
     with open(filename, "r") as original:
         print(filename)
-        wf = open("./traffic_sign_txt/%s.txt" % file_name, 'w')
+        wf = open(str(cur_dir + "/traffic_sign_txt/%s.txt") % file_name, 'w')
         original = json.load(original)
         for el in original["annotation"]:
             tmp = True
