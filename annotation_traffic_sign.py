@@ -3,7 +3,8 @@ import json
 import os
 import pdb
 
-file_path = "./c_validation_1280_720_daylight_1/"
+#file_path = "./c_validation_1280_720_daylight_1/"
+file_path = "C:/Users/a/annotation/c_validation_1280_720_daylight_1"
 os.chdir(file_path)
 file_list = os.listdir()
 #cnt=0
@@ -11,7 +12,7 @@ for filename in file_list:
     file_name = os.path.splitext(filename)[0]
     with open(filename, "r") as original:
         print(filename)
-        wf = open("../output_trafficsign/%s.txt" % file_name, 'w')
+        wf = open("../trafic_sign_txt/%s.txt" % file_name, 'w')
         original = json.load(original)
         for el in original["annotation"]:
             tmp = True
@@ -58,6 +59,8 @@ for filename in file_list:
                 width = (el["box"][2] - el["box"][0])
                 height = (el["box"][3] - el["box"][1])
                 if center_x > 1280 or center_y > 720 or center_x < 0 or center_y < 0:
+                    raise error
+                if width > 1280 or height > 720 or width < 0 or height < 0:
                     raise error
                 wf.write("%f %f %f %f\n" % (center_x/1280, center_y/720, width/1280, height/720))
         wf.close()

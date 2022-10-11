@@ -13,9 +13,9 @@ val_names, test_names = train_test_split(test_names, test_size=0.5, random_state
 
 def batch_move_files(file_list, img_source_path, txt_source_path, img_destination_path, txt_destination_path):
     for file in file_list:
-        image = file.split('/')[-1] + '.png'
-        txt = file.split('/')[-1] + 'txt'
-
+        image = file.split('\\')[-1] + '.png'
+        txt = file.split('\\')[-1] + '.txt'
+        
         shutil.copy(os.path.join(img_source_path, image), img_destination_path)
         shutil.copy(os.path.join(txt_source_path, txt), txt_destination_path)
     return
